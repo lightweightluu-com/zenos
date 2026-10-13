@@ -73,7 +73,7 @@ export function Philosophy() {
               className="aspect-[2/3] size-full object-cover object-[40%_50%] transition-transform duration-[1.4s] hover:scale-105"
             />
           </motion.figure>
-          <div className="pointer-events-none absolute -right-10 -bottom-10 -z-10 size-72 rounded-full bg-gold/10 blur-[100px]" aria-hidden="true" />
+          <div className="pointer-events-none absolute -right-10 -bottom-10 -z-10 size-72 rounded-full bg-olive/30 blur-[100px]" aria-hidden="true" />
         </div>
       </div>
     </section>

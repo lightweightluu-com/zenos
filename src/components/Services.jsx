@@ -59,7 +59,7 @@ function ServiceCard({ s, i }) {
 
 export function Services() {
   return (
-    <section id="leistungen" className="relative bg-[linear-gradient(to_bottom,var(--color-ink),#121213_50%,var(--color-ink))] py-28 sm:py-40">
+    <section id="leistungen" className="relative bg-[linear-gradient(to_bottom,var(--color-ink),var(--color-olive-deep)_50%,var(--color-ink))] py-28 sm:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl">
           <Reveal>

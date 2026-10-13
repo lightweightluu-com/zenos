@@ -15,8 +15,8 @@ export function Booking() {
         decoding="async"
         className="absolute inset-0 -z-20 size-full object-cover object-[45%_40%]"
       />
-      <div className="absolute inset-0 -z-10 bg-ink/80" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(201,160,99,0.14),transparent_65%)]" />
+      <div className="absolute inset-0 -z-10 bg-olive-deep/85" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(107,99,65,0.35),transparent_65%)]" />
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <Reveal>
           <p className="text-xs tracking-[0.35em] text-gold uppercase sm:text-sm">Termin vereinbaren</p>
