@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CalendarCheck, Menu } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from './ui/dialog';
@@ -6,9 +7,9 @@ import { BOOKING_URL, NAV } from '../content';
 
 export function Logo({ className = '' }) {
   return (
-    <a href="#top" className={`font-serif text-xl tracking-wide text-bone sm:text-2xl ${className}`} aria-label="Zeno's Private Hair Atelier – zum Seitenanfang">
+    <Link to="/" className={`font-serif text-xl tracking-wide text-bone sm:text-2xl ${className}`} aria-label="Zeno's Private Hair Atelier – zum Seitenanfang">
       Zeno<span className="text-gold">’</span>s <span className="hidden text-mist sm:inline">Private Hair Atelier</span>
-    </a>
+    </Link>
   );
 }
 
@@ -33,10 +34,10 @@ export function Navbar() {
         <Logo />
         <ul className="hidden items-center gap-10 md:flex">
           {NAV.map((n) => (
-            <li key={n.href}>
-              <a href={n.href} className="text-sm tracking-[0.18em] text-bone/80 uppercase transition-colors hover:text-gold-soft">
+            <li key={n.to}>
+              <Link to={n.to} className="text-sm tracking-[0.18em] text-bone/80 uppercase transition-colors hover:text-gold-soft">
                 {n.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -57,11 +58,11 @@ export function Navbar() {
               <DialogDescription className="sr-only">Navigation</DialogDescription>
               <ul className="mt-16 flex flex-col gap-2">
                 {NAV.map((n) => (
-                  <li key={n.href}>
+                  <li key={n.to}>
                     <DialogClose asChild>
-                      <a href={n.href} className="block border-b border-line py-5 font-serif text-4xl text-bone hover:text-gold-soft">
+                      <Link to={n.to} className="block border-b border-line py-5 font-serif text-4xl text-bone hover:text-gold-soft">
                         {n.label}
-                      </a>
+                      </Link>
                     </DialogClose>
                   </li>
                 ))}

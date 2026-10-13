@@ -10,13 +10,13 @@ export function Philosophy() {
   const y2 = useTransform(scrollYProgress, [0, 1], [reduce ? 0 : -30, reduce ? 0 : 70]);
 
   return (
-    <section ref={ref} id="philosophie" className="relative overflow-hidden bg-ink py-28 sm:py-40">
+    <section ref={ref} id="philosophie" className="relative overflow-hidden bg-ink pt-36 pb-28 sm:pt-48 sm:pb-40">
       <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-6 lg:pr-10 lg:pt-16">
           <Reveal>
             <p className="text-xs tracking-[0.35em] text-gold uppercase sm:text-sm">Philosophie</p>
           </Reveal>
-          <Reveal as="h2" delay={0.1} className="mt-6 font-serif text-4xl leading-[1.05] font-light sm:text-6xl">
+          <Reveal as="h1" delay={0.1} className="mt-6 font-serif text-4xl leading-[1.05] font-light sm:text-6xl">
             Wo Handwerk <span className="gold-text italic">zur Kunst</span> wird.
           </Reveal>
           <Reveal delay={0.2} className="mt-8 space-y-5 text-base leading-relaxed text-bone/75 sm:text-lg">

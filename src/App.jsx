@@ -1,23 +1,22 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CalendarCheck } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Studio } from './components/Studio';
 import { Philosophy } from './components/Philosophy';
 import { Services } from './components/Services';
-import { Booking } from './components/Booking';
+import { ServiceDetail } from './components/ServiceDetail';
 import { Footer } from './components/Footer';
+import { ScrollManager } from './components/ScrollManager';
 import { BOOKING_URL } from './content';
 
 function StickyBook() {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const on = () => {
-      const b = document.getElementById('buchen');
-      const nearBooking = b && b.getBoundingClientRect().top < window.innerHeight * 0.6;
-      setShow(window.scrollY > window.innerHeight * 0.7 && !nearBooking);
-    };
+    const on = () => setShow(window.scrollY > window.innerHeight * 0.7);
     on();
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
@@ -43,21 +42,34 @@ function StickyBook() {
   );
 }
 
-export default function App() {
+function Home() {
   return (
     <>
-      <a href="#philosophie" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-ink">
+      <Hero />
+      <Studio />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollManager />
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-ink">
         Zum Inhalt springen
       </a>
       <Navbar />
-      <main>
-        <Hero />
-        <Philosophy />
-        <Services />
-        <Booking />
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/philosophie" element={<Philosophy />} />
+          <Route path="/leistungen" element={<Services />} />
+          <Route path="/leistungen/:key" element={<ServiceDetail />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
       <StickyBook />
-    </>
+    </BrowserRouter>
   );
 }
