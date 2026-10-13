@@ -1,20 +1,24 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// App-Name und Farben hier anpassen – sie landen im Web-App-Manifest.
-const APP_NAME = 'Neue App';
-const APP_SHORT_NAME = 'App';
-const THEME_COLOR = '#14532d';
-const BACKGROUND_COLOR = '#f7f5ef';
+const APP_NAME = "Zeno's Private Hair Atelier";
+const APP_SHORT_NAME = 'Zenos Atelier';
+const THEME_COLOR = '#0e0e0f';
+const BACKGROUND_COLOR = '#0e0e0f';
 
 export default defineConfig({
   plugins: [
+    react(),
+    tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: APP_NAME,
         short_name: APP_SHORT_NAME,
+        description: 'Privates Hair Atelier – Haarschnitt, Coloration, Bart und Styling. Stil beginnt hier.',
         lang: 'de',
         start_url: '/',
         scope: '/',
