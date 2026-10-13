@@ -29,8 +29,8 @@ export function Hero() {
           className="size-full object-cover object-[50%_15%] md:object-[70%_30%]"
         />
       </motion.div>
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,var(--color-ink)_8%,rgba(14,14,15,0.55)_45%,rgba(14,14,15,0.15)_100%)] md:bg-[linear-gradient(95deg,var(--color-ink)_12%,rgba(14,14,15,0.7)_42%,rgba(14,14,15,0)_75%)]" />
-      <div className="absolute -left-40 top-1/3 -z-10 size-[34rem] rounded-full bg-gold/10 blur-[120px]" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,var(--color-ink)_8%,rgba(15,16,13,0.55)_45%,rgba(15,16,13,0.15)_100%)] md:bg-[linear-gradient(95deg,var(--color-ink)_12%,rgba(15,16,13,0.7)_42%,rgba(15,16,13,0)_75%)]" />
+      <div className="absolute -left-40 top-1/3 -z-10 size-[34rem] rounded-full bg-olive/25 blur-[120px]" aria-hidden="true" />
 
       <motion.div style={{ y: textY, opacity: fade }} className="mx-auto w-full max-w-7xl px-5 pb-28 pt-32 sm:px-8 md:pb-0">
         <motion.p

@@ -8,14 +8,16 @@
 @theme {
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter Variable', system-ui, sans-serif;
-  --color-ink: #0e0e0f;
-  --color-coal: #161617;
-  --color-slate: #1f2022;
-  --color-line: #2c2d30;
+  --color-ink: #0f100d;
+  --color-coal: #171813;
+  --color-slate: #20211a;
+  --color-line: #2e2f25;
   --color-bone: #efe9df;
   --color-mist: #a29d94;
   --color-gold: #c9a063;
   --color-gold-soft: #e3c48f;
+  --color-olive: #6b6341;
+  --color-olive-deep: #25251a;
   --color-bronze: #8a6a3b;
 }
 

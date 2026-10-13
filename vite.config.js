@@ -5,8 +5,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 const APP_NAME = "Zeno's Private Hair Atelier";
 const APP_SHORT_NAME = 'Zenos Atelier';
-const THEME_COLOR = '#0e0e0f';
-const BACKGROUND_COLOR = '#0e0e0f';
+const THEME_COLOR = '#0f100d';
+const BACKGROUND_COLOR = '#0f100d';
 
 export default defineConfig({
   plugins: [
