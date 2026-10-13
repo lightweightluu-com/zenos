@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Logo } from './Navbar';
 import { BOOKING_URL, NAV } from '../content';
 
@@ -11,9 +12,9 @@ export function Footer() {
         </div>
         <nav aria-label="Fusszeile" className="flex flex-wrap gap-x-8 gap-y-1 text-sm tracking-[0.15em] uppercase">
           {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="inline-flex min-h-11 items-center text-bone/70 hover:text-gold-soft">
+            <Link key={n.to} to={n.to} className="inline-flex min-h-11 items-center text-bone/70 hover:text-gold-soft">
               {n.label}
-            </a>
+            </Link>
           ))}
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-gold hover:text-gold-soft">
             Jetzt buchen

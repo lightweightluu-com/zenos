@@ -61,3 +61,11 @@ body {
   html { scroll-behavior: auto; }
   .gold-text { animation: none; }
 }
+
+/* Karte: dunkel getönt, Marker in Gold */
+.studio-map { background: var(--color-coal); z-index: 0; }
+.studio-map .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(0.9) saturate(0.45) sepia(0.25); }
+.studio-map .leaflet-control-attribution { background: rgba(15,16,13,0.8); color: var(--color-mist); font-size: 10px; }
+.studio-map .leaflet-control-attribution a { color: var(--color-gold-soft); }
+.studio-map .leaflet-bar a { background: var(--color-coal); color: var(--color-bone); border-color: var(--color-line); }
+.map-pin { display: block; width: 28px; height: 28px; border-radius: 50%; background: var(--color-gold); border: 3px solid var(--color-ink); box-shadow: 0 0 0 6px rgba(201,160,99,0.3), 0 0 30px rgba(201,160,99,0.6); }

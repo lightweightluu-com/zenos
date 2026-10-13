@@ -76,12 +76,12 @@ export function Hero() {
             </a>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a href="#leistungen">Leistungen entdecken</a>
+            <a href="#studio">Studio entdecken</a>
           </Button>
         </motion.div>
       </motion.div>
 
-      <a href="#philosophie" aria-label="Nach unten scrollen" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-gold md:block">
+      <a href="#studio" aria-label="Nach unten zum Studio scrollen" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-gold md:block">
         <motion.span animate={reduce ? {} : { y: [0, 10, 0] }} transition={{ duration: 2.4, repeat: Infinity }} className="block">
           <ArrowDown className="size-6" />
         </motion.span>
