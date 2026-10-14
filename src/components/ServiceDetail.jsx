@@ -43,11 +43,11 @@ export function ServiceDetail() {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link to={`/leistungen/${next.key}`}>Weiter: {next.title}</Link>
+              <Link to={`/leistungen/${next.key}`}>Weiter zu {next.title}</Link>
             </Button>
           </Reveal>
         </div>
-        <Reveal delay={0.2} className="overflow-hidden rounded-sm">
+        <Reveal delay={0.2} className="overflow-hidden rounded-xl">
           <img
             src={s.image}
             alt=""

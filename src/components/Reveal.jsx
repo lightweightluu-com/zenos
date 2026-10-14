@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
+import { DUR, EASE_OUT } from '../lib/motion';
 
-export function Reveal({ children, delay = 0, y = 28, className, as = 'div' }) {
+export function Reveal({ children, delay = 0, y = 16, className, as = 'div' }) {
   const Comp = motion[as];
   return (
     <Comp
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: DUR.reveal, delay, ease: EASE_OUT }}
     >
       {children}
     </Comp>
