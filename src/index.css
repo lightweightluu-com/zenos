@@ -91,3 +91,26 @@ body {
 @media (pointer: coarse) {
   .studio-map .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 20px; }
 }
+
+/* Hero-Schriftzug: nur Kontur, bewusst leise */
+.hero-mark { color: transparent; -webkit-text-stroke: 1px rgba(201, 160, 99, 0.28); }
+
+/* Mobiles Menü: Kreis-Reveal aus der Ecke des Menü-Buttons, danach gestaffelte Einträge */
+.menu { --origin: calc(100% - 2.75rem) calc(env(safe-area-inset-top) + 2rem); }
+@keyframes menu-in { from { clip-path: circle(0 at var(--origin)); } to { clip-path: circle(150vmax at var(--origin)); } }
+@keyframes menu-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes item-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes line-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes bar-a { from { transform: rotate(0) scaleX(0.4); opacity: 0; } to { transform: rotate(45deg); opacity: 1; } }
+@keyframes bar-b { from { transform: rotate(0) scaleX(0.4); opacity: 0; } to { transform: rotate(-45deg); opacity: 1; } }
+.menu[data-state='open'] { animation: menu-in 300ms var(--ease-out) both; }
+.menu[data-state='closed'] { animation: menu-out 150ms ease-in both; }
+.menu[data-state='open'] .menu-item { animation: item-in 300ms var(--ease-out) both; animation-delay: calc(120ms + var(--i, 0) * 50ms); }
+.menu[data-state='open'] .menu-line { transform-origin: left; animation: line-in 400ms var(--ease-out) both; animation-delay: calc(160ms + var(--i, 0) * 50ms); }
+.menu[data-state='open'] .bar-a { animation: bar-a 250ms var(--ease-out) 60ms both; }
+.menu[data-state='open'] .bar-b { animation: bar-b 250ms var(--ease-out) 60ms both; }
+@media (prefers-reduced-motion: reduce) {
+  .menu[data-state='open'] { animation: fade-in 150ms ease-out both; }
+  .menu[data-state='open'] .menu-item, .menu[data-state='open'] .menu-line, .menu[data-state='open'] .bar-a, .menu[data-state='open'] .bar-b { animation: none; }
+  .menu .bar-a { transform: rotate(45deg); } .menu .bar-b { transform: rotate(-45deg); }
+}
