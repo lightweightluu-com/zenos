@@ -18,6 +18,9 @@
   --color-gold-soft: #e3c48f;
   --color-olive: #6b6341;
   --color-olive-deep: #25251a;
+  --color-surface: #1b1c16;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-card: 0.75rem;
   --color-bronze: #8a6a3b;
 }
 
@@ -36,7 +39,7 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 ::selection { background: var(--color-gold); color: var(--color-ink); }
-:focus-visible { outline: 2px solid var(--color-gold-soft); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--color-gold-soft); outline-offset: 2px; }
 
 .grain::after {
   content: '';
@@ -47,19 +50,10 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@keyframes sheen { to { background-position: 200% center; } }
-.gold-text {
-  background: linear-gradient(100deg, var(--color-bronze), var(--color-gold-soft), var(--color-gold), var(--color-bronze));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: sheen 8s linear infinite;
-}
+.gold-text { color: var(--color-gold-soft); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .gold-text { animation: none; }
 }
 
 /* Karte: dunkel getönt, Marker in Gold */
@@ -69,3 +63,31 @@ body {
 .studio-map .leaflet-control-attribution a { color: var(--color-gold-soft); }
 .studio-map .leaflet-bar a { background: var(--color-coal); color: var(--color-bone); border-color: var(--color-line); }
 .map-pin { display: block; width: 28px; height: 28px; border-radius: 50%; background: var(--color-gold); border: 3px solid var(--color-ink); box-shadow: 0 0 0 6px rgba(201,160,99,0.3), 0 0 30px rgba(201,160,99,0.6); }
+
+/* Drawer (mobile Navigation): Eintritt 250 ms ease-out, Austritt 150 ms ease-in */
+@keyframes drawer-in { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes drawer-out { from { transform: none; } to { transform: translateX(100%); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+.drawer[data-state='open'] { animation: drawer-in 250ms var(--ease-out); }
+.drawer[data-state='closed'] { animation: drawer-out 150ms ease-in; }
+.scrim[data-state='open'] { animation: fade-in 250ms var(--ease-out); }
+.scrim[data-state='closed'] { animation: fade-out 150ms ease-in; }
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .scrim { animation: none !important; }
+}
+
+/* Skeleton: erscheint erst nach 300 ms, damit kurze Ladezeiten nicht flackern */
+@keyframes shimmer { to { background-position: -200% 0; } }
+.skeleton {
+  opacity: 0;
+  animation: fade-in 200ms ease-out 300ms forwards, shimmer 1.6s linear infinite;
+  background: linear-gradient(100deg, var(--color-coal) 30%, var(--color-slate) 50%, var(--color-coal) 70%);
+  background-size: 200% 100%;
+}
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: fade-in 200ms ease-out 300ms forwards; } }
+
+/* Touch: Kartensteuerung auf 44 px */
+@media (pointer: coarse) {
+  .studio-map .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 20px; }
+}

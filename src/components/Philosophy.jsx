@@ -47,7 +47,7 @@ export function Philosophy() {
         </div>
 
         <div className="relative grid grid-cols-5 gap-4 lg:col-span-6">
-          <motion.figure style={{ y: y1 }} className="col-span-3 overflow-hidden rounded-sm">
+          <motion.figure style={{ y: y1 }} className="col-span-3 overflow-hidden rounded-xl">
             <img
               src="/img/salon-600.webp"
               srcSet="/img/salon-600.webp 600w, /img/salon-1000.webp 1000w"
@@ -57,10 +57,10 @@ export function Philosophy() {
               height="1500"
               loading="lazy"
               decoding="async"
-              className="aspect-[2/3] size-full object-cover transition-transform duration-[1.4s] hover:scale-105"
+              className="aspect-[2/3] size-full object-cover transition-transform duration-200 ease-out [@media(hover:hover)]:hover:scale-105"
             />
           </motion.figure>
-          <motion.figure style={{ y: y2 }} className="col-span-2 mt-24 overflow-hidden rounded-sm sm:mt-40">
+          <motion.figure style={{ y: y2 }} className="col-span-2 mt-24 overflow-hidden rounded-xl sm:mt-40">
             <img
               src="/img/atelier-900.webp"
               srcSet="/img/atelier-900.webp 900w, /img/atelier-1800.webp 1800w"
@@ -70,10 +70,9 @@ export function Philosophy() {
               height="1200"
               loading="lazy"
               decoding="async"
-              className="aspect-[2/3] size-full object-cover object-[40%_50%] transition-transform duration-[1.4s] hover:scale-105"
+              className="aspect-[2/3] size-full object-cover object-[40%_50%] transition-transform duration-200 ease-out [@media(hover:hover)]:hover:scale-105"
             />
           </motion.figure>
-          <div className="pointer-events-none absolute -right-10 -bottom-10 -z-10 size-72 rounded-full bg-olive/30 blur-[100px]" aria-hidden="true" />
         </div>
       </div>
     </section>
