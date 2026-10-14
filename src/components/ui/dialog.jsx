@@ -1,5 +1,4 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 export const Dialog = DialogPrimitive.Root;
@@ -8,24 +7,24 @@ export const DialogClose = DialogPrimitive.Close;
 export const DialogTitle = DialogPrimitive.Title;
 export const DialogDescription = DialogPrimitive.Description;
 
-// Navigation vom Rand: Drawer, der nur seine eigene Fläche abdunkelt (Scrim + Fokus-Trap + Esc von Radix).
-export function DrawerContent({ className, children, ...props }) {
+// Vollflächiges Menü: reveal als wachsender Kreis aus der Ecke des Menü-Buttons (siehe .menu in index.css).
+// Radix liefert Fokus-Trap, Esc und Scroll-Lock; die Animation hängt an data-state.
+export function MenuContent({ className, children, ...props }) {
   return (
     <DialogPrimitive.Portal>
-      <DialogPrimitive.Overlay className="scrim fixed inset-0 z-[60] bg-ink/70 backdrop-blur-sm" />
       <DialogPrimitive.Content
-        className={cn(
-          'drawer fixed inset-y-0 right-0 z-[70] flex w-[min(88vw,24rem)] flex-col border-l border-bone/10 bg-coal px-6 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))]',
-          className
-        )}
+        className={cn('menu fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-coal px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[env(safe-area-inset-top)]', className)}
         {...props}
       >
         {children}
         <DialogPrimitive.Close
           aria-label="Menü schliessen"
-          className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] grid size-12 place-items-center rounded-full text-bone transition-colors duration-150 hover:text-gold-soft"
+          className="absolute right-5 top-[calc(env(safe-area-inset-top)+0.5rem)] grid size-12 place-items-center rounded-full text-bone transition-colors duration-150 hover:text-gold-soft"
         >
-          <X className="size-6" />
+          <span className="relative block size-6" aria-hidden="true">
+            <span className="bar-a absolute top-1/2 left-0 block h-0.5 w-full -translate-y-1/2 rounded-full bg-current" />
+            <span className="bar-b absolute top-1/2 left-0 block h-0.5 w-full -translate-y-1/2 rounded-full bg-current" />
+          </span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>

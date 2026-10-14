@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarCheck, Menu } from 'lucide-react';
+import { CalendarCheck } from 'lucide-react';
 import { Button } from './ui/button';
-import { Dialog, DialogTrigger, DrawerContent, DialogTitle, DialogDescription, DialogClose } from './ui/dialog';
-import { BOOKING_URL, NAV } from '../content';
+import { Dialog, DialogTrigger, MenuContent, DialogTitle, DialogDescription, DialogClose } from './ui/dialog';
+import { BOOKING_URL, NAV, STUDIO } from '../content';
 
 export function Logo({ className = '' }) {
   return (
@@ -57,30 +57,45 @@ export function Navbar() {
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden" aria-label="Menü öffnen">
-                <Menu className="size-6" />
+                <span className="relative block h-4 w-6" aria-hidden="true">
+                  <span className="absolute top-0 left-0 h-0.5 w-full rounded-full bg-current" />
+                  <span className="absolute top-[7px] left-0 h-0.5 w-4/5 rounded-full bg-current" />
+                  <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-current" />
+                </span>
               </Button>
             </DialogTrigger>
-            <DrawerContent>
-              <DialogTitle className="font-serif text-2xl">Zeno’s Atelier</DialogTitle>
-              <DialogDescription className="sr-only">Navigation</DialogDescription>
-              <ul className="mt-12 flex flex-col">
-                {NAV.map((n) => (
-                  <li key={n.to}>
+            <MenuContent>
+              <div className="flex h-16 items-center">
+                <DialogTitle className="font-serif text-xl tracking-wide sm:text-2xl">Zeno<span className="text-gold">’</span>s</DialogTitle>
+                <DialogDescription className="sr-only">Navigation</DialogDescription>
+              </div>
+              <ul className="mt-10 flex flex-col">
+                {NAV.map((n, i) => (
+                  <li key={n.to} style={{ '--i': i }} className="relative">
                     <DialogClose asChild>
-                      <Link to={n.to} className="flex min-h-14 items-center border-b border-bone/10 font-serif text-3xl text-bone transition-colors duration-150 hover:text-gold-soft">
+                      <Link to={n.to} className="menu-item flex min-h-[4.5rem] items-baseline gap-4 py-4 font-serif text-5xl font-light text-bone transition-colors duration-150 hover:text-gold-soft">
+                        <span className="font-sans text-xs tracking-[0.2em] text-gold tabular-nums">0{i + 1}</span>
                         {n.label}
                       </Link>
                     </DialogClose>
+                    <span className="menu-line absolute inset-x-0 bottom-0 h-px bg-bone/15" aria-hidden="true" />
                   </li>
                 ))}
               </ul>
-              <Button asChild size="lg" className="mt-auto w-full">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                  <CalendarCheck className="size-5" /> Jetzt buchen
-                  <span className="sr-only">(öffnet Treatwell in neuem Tab)</span>
-                </a>
-              </Button>
-            </DrawerContent>
+              <div className="menu-item mt-auto space-y-6 pt-10" style={{ '--i': NAV.length }}>
+                <address className="text-sm leading-relaxed text-mist not-italic">
+                  {STUDIO.street}, {STUDIO.zip} {STUDIO.city}
+                  <br />
+                  <a href={STUDIO.phoneHref} className="inline-flex min-h-11 items-center text-bone tabular-nums">{STUDIO.phone}</a>
+                </address>
+                <Button asChild size="lg" className="w-full">
+                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                    <CalendarCheck className="size-5" /> Jetzt buchen
+                    <span className="sr-only">(öffnet Treatwell in neuem Tab)</span>
+                  </a>
+                </Button>
+              </div>
+            </MenuContent>
           </Dialog>
         </div>
       </nav>
